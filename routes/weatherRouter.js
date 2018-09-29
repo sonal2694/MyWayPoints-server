@@ -9,8 +9,8 @@ weatherRouter.use(bodyParser.json());
 
 weatherRouter.route('/')
 .all((req, res, next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    
+    
     next();
 })
 .get((req, res, next) => {
@@ -23,16 +23,22 @@ weatherRouter.route('/')
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}`;
     request(url, (err, response, body) => {
         if(err){
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'application/json');
             res.json({"weather": null, "error": 'Error, please try again'});
         }
         else {
             let weather = JSON.parse(body);
-            if(weather.main == undefined){
+            if(weather.main == undefined) {
+                res.statusCode = 404;
+                res.setHeader('Content-Type', 'application/json');
                 res.json({"weather": null, "error": 'Error, please try again blaaa'});
             }
             else {
                 let weatherText = `It's ${weather.main.temp} degrees in ${weather.name}!`;
                 //res.render('index', {weather: weatherText, error: null});
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
                 res.json({"weather": weatherText, "error": null});
             }
         }
