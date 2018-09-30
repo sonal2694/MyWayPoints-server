@@ -8,11 +8,6 @@ const weatherRouter = express.Router();
 weatherRouter.use(bodyParser.json());
 
 weatherRouter.route('/')
-.all((req, res, next) => {
-    
-    
-    next();
-})
 .get((req, res, next) => {
     res.end('Will send all the weather to you!');
 })

@@ -28,7 +28,7 @@ mapRouter.route('/')
     .then((response) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(response);
+        res.json(response.json);
     })
     .catch((err) => {
         console.log(err);
