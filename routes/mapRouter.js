@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const getWaypoints = require('./getWaypoints');
 
 const mapRouter = express.Router();
 
@@ -26,9 +27,16 @@ mapRouter.route('/')
     })
     .asPromise()
     .then((response) => {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        res.json(response.json);
+        getWaypoints(response.json)
+        .then((weatherArray) => {
+            console.log("Done");
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(weatherArray);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     })
     .catch((err) => {
         console.log(err);
