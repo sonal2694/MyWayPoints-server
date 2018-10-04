@@ -29,10 +29,13 @@ mapRouter.route('/')
     .then((response) => {
         getWaypoints(response.json)
         .then((weatherArray) => {
-            console.log("Done");
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(weatherArray);
+            resp = {
+                "directions" : response.json,
+                "weatherData": weatherArray
+            }
+            res.json(resp);
         })
         .catch((err) => {
             console.log(err);
