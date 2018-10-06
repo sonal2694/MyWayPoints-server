@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//JS files that handle REST API calls
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mapRouter = require('./routes/mapRouter');
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/map', mapRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
