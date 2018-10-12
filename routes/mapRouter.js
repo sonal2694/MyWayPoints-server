@@ -18,7 +18,7 @@ const dbname = 'myWayPoints';
 // Replace YOUR_API_KEY with the actual Google API key.
 // Used to get directions from origin to destination
 var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyAjj0bNxVgUF6IeSHBXdHLVEgWP9f6OCCs',
+    key: 'API_KEY',
     Promise: Promise
 });
 

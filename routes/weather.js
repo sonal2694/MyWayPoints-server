@@ -2,7 +2,7 @@
 // the cache or by making an API call.
 
 const request = require('request-promise');
-const weatherApiKey = '16fc319a4c40a6abae9a56af8d5ba50b';
+const weatherApiKey = 'OPEWEATHERMAP_API_KEY';
 const reverseGeocode = require('./reverseGeocode');
 const validateCache = require('./validateCache');
 
@@ -39,7 +39,7 @@ var getWeatherInfoFromCache = function(cityName) {
 					// // if the weather is old, sends a message saying "Cache Stale"
 					if (validateCache.validate(record)) {
 						console.log("Cahe Hit!: " + record.cityName);
-						resolve(record.weatherObj);
+						resolve(record.weatherData);
 					} else {
 						console.log("Cache Stale! Weather");
 						reject('getWeatherFromCache failed: ' + cityName);

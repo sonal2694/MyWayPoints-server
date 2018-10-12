@@ -3,7 +3,7 @@
 //returns false if document has expired a given time
 var validate = function(doc) {
 
-	let sensitivity = 30 // in seconds
+	let sensitivity = 120 // in seconds
 	sensitivity *= 1000;
 
 	let docLastUpdatedTime = Number(doc.updatedAt);

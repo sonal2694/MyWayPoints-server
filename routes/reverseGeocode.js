@@ -1,7 +1,7 @@
 // Replace YOUR_API_KEY with the actual Google API key.
 // Used for reverse geocoding in this file
 var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyAjj0bNxVgUF6IeSHBXdHLVEgWP9f6OCCs',
+    key: 'API_KEY',
     Promise: Promise
 });
 
